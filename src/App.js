@@ -1,24 +1,56 @@
-import logo from './logo.svg';
+import React, { Fragment } from "react";
 import './App.css';
 
+// @ts-ignore
+import ListHotel from "./components/ListHotel";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import Customer from "./components/Customer";
+import Booking from "./components/Booking";
+import ListRooms from "./components/Rooms";
+import Employee from "./components/Employee";
+import EmployeePortal from "./components/EmployeePortal";
+import ViewRooms from "./components/ViewRoom";
+
 function App() {
+  let component
+  switch (window.location.pathname) {
+    case "/":
+      component = <Home />
+      break;
+    case "/edithotel":
+      component = <ListHotel />
+      break;
+    case "/customer":
+      component = <Customer />
+      break;
+    case "/booking":
+      component = <Booking />
+      break;
+    case "/room":
+      component = <ListRooms />
+      break;
+    case "/employee":
+      component = <Employee />
+    break;
+    case "/employeePortal":
+      component = <EmployeePortal />
+    break;
+    case "/viewroom":
+      component = <ViewRooms />
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      {component}
+    </>
+    // <Fragment>
+    //   <h1><Navbar /></h1>
+    //   <div className="container">
+    //     <InputHotel />
+    //     <ListHotel />
+    //   </div>
+    // </Fragment>
   );
 }
 
